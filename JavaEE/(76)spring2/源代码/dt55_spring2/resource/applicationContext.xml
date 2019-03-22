@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<!-- 将三个切面交给spring容器来创建对象 -->
+	<bean id="security" class="cn.java.dao.impl.Security"></bean>
+	<bean id="appLog" class="cn.java.dao.impl.AppLog"></bean>
+	<bean id="clearResource" class="cn.java.dao.impl.ClearResource"></bean>
+	
+	<!-- 将核心类的对象创建过程交给spring容器 -->
+	<bean id="appDaoImpl" class="cn.java.dao.impl.AppDaoImpl"></bean>
+	
+	<!-- 配置aop -->
+	<aop:config>
+		<!-- 配置切入点 -->
+		<aop:pointcut expression="execution (* cn.java.dao.impl.AppDaoImpl.* (..))" id="dian"/>
+		<!-- 配置切面与通知 -->
+		<aop:aspect ref="security">
+			<aop:before method="isSecurity" pointcut-ref="dian"/>
+		</aop:aspect>
+		<aop:aspect ref="clearResource">
+			<aop:after method="clean" pointcut-ref="dian"/>
+		</aop:aspect>
+		<aop:aspect ref="appLog">
+			<aop:after method="log" pointcut-ref="dian"/>
+		</aop:aspect>
+	</aop:config>
+	
+
+</beans>

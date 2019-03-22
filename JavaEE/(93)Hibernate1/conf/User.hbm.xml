@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.java.dao.impl">
+	<!-- 
+		name:指定实体类名字
+		table:指定数据库表名
+	 -->	
+	<class name="User" table="users">
+		<id name="id" type="long" column="id">
+			<generator class="native" />
+		</id>
+		<!-- 
+			name:指定实体类中属性名
+			type：指定实体类中属性名类型
+			column:指定数据库表中字段名
+			length:指定数据库表中字段的长度
+		 -->
+		<property name="username" type="string" column="username" length="40"></property>
+		<property name="password" type="string" column="password" length="40"></property>
+	</class>
+</hibernate-mapping>

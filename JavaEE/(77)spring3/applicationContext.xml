@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+       
+       <!-- 注解驱动、包扫描 -->
+       <context:component-scan base-package="cn.java.controller,cn.java.service.impl"></context:component-scan>
+       
+       <!-- 数据源 -->
+       <bean id="basicDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+			<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+			<property name="url" value="jdbc:mysql:///dt48_mybatis"/>
+			<property name="username" value="root"/>
+			<property name="password" value="root"/>
+		</bean>
+       
+       <!-- 配置相关工具类，让工具帮助自动获取SqlSession对象 -->
+       <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+       		<property name="dataSource" ref="basicDataSource"></property>
+       		<property name="mapperLocations" value="cn/java/mapper/*.xml"></property>
+       </bean>
+       
+       
+       <!-- 将dao层类中的方法与xxx.xml中的sql语句关联 -->
+       <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+       		<property name="basePackage" value="cn.java.dao"></property>
+       </bean>
+       
+</beans>

@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory name="mysql">
+		<!-- 配置hibernate方言 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- 配置mysql驱动 -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!-- 配置url -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/dt47</property>
+		<!-- 配置username -->
+		<property name="connection.username">root</property>
+		<!-- 配置password -->
+		<property name="hibernate.connection.password">root</property>
+		
+		<property name="hbm2ddl.auto">update</property>
+		
+		<mapping resource="cn/java/dao/impl/User.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

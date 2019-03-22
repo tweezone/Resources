@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<!-- 
+		extends属性：固定写法
+		namespace：全局虚拟路径
+	 -->
+	<package name="abc" extends="struts-default" namespace="/front">
+		
+		<!-- 
+			action标签：一个action代表一个类
+				class属性：action类的具体路径
+				method属性：指定action类中的某一个方法
+				name：虚拟路径
+		 -->
+		<action name="login" class="cn.java.action.front.FrontAction" method="login">
+			<result name="success">/pages/front/success.jsp</result>
+			<result name="fail" type="redirect">/pages/front/fail.jsp</result>
+		</action>
+		
+		<action name="register" class="cn.java.action.front.FrontAction" method="register">
+			<result name="aaa" type="redirect">/pages/front/success.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>

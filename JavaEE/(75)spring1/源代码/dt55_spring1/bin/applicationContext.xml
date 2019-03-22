@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- <import resource="cn/java/ioc1/applicationContext-ioc.xml"/>
+	<import resource="cn/java/singleton2/applicationContext-singleton.xml"/> -->
+	<!-- <import resource="cn/java/lazy3/applicationContext-lazy.xml"/> -->
+	<import resource="cn/java/initAndDestroy4/applicationContext-initAndDestroy.xml"/>
+  
+</beans>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 
+		name:取一个别名
+		namespace：action的全局访问路径
+	 -->
+	<package name="aaaa" namespace="/front" extends="struts-default">
+		<!-- 
+			name:action类对外的访问虚拟路径
+			class:定位action的类路径
+			浏览器访问某一个action的虚拟路径：namespace+name
+		 -->
+		<action name="loginAction" class="cn.java.action.LoginAction">
+			<!-- 
+				result标签：用于配置转发或者重定向的资源文件
+				name:为跳转的资源文件取一个名字
+				type:如果默认不指定的话为转发，type=redirect代表重定向
+			 -->
+			<result name="success" type="redirect">/pages/front/login.jsp</result>
+		</action>
+		
+		<!-- 代表的是register -->
+		<action name="register222" class="cn.java.action.FrontAction" method="register">
+			<result name="success" type="redirect">/pages/front/login.jsp</result>
+		</action>
+		<!-- 注销 -->
+		<action name="logout" class="cn.java.action.FrontAction" method="logout">
+			<result name="success">/pages/front/login.jsp</result>
+		</action>
+	</package>
+</struts>

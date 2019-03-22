@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.java.dao.impl">
+
+	<!-- 书写pojo与表的映射关系 -->
+	<!-- 
+		class标签：将类与表进行映射
+			name属性：对应实体类名
+			table属性：对应表名
+	 -->
+	<class name="Student" table="students">
+		<id name="id" type="long" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="stuNum" type="string" column="stuNum"></property>
+		<property name="stuName" type="string" column="stuName"></property>
+		<property name="course" type="string" column="course"></property>
+	</class>
+
+</hibernate-mapping>

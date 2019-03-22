@@ -1,0 +1,5 @@
+<bean id="tiger1" class="cn.java.di5.Tiger">
+       <constructor-arg index="0" type="java.lang.String" value="¶«±±»¢"></constructor-arg>
+       <constructor-arg index="1" type="java.lang.Integer" value="10"></constructor-arg>
+       <constructor-arg index="2" type="java.lang.Float" value="200.5"></constructor-arg>
+     </bean>

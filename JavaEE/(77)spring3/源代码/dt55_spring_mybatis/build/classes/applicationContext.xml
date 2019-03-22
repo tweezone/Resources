@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+       
+       <!-- 配置包扫描 -->
+       <context:component-scan base-package="cn.java.servlet,cn.java.service.impl" />
+       
+       <!-- ctrl+shift+H 配置数据源:driver、url、username、password -->
+       <bean id="basicDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+       		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+       		<property name="url" value="jdbc:mysql:///dt55"></property>
+       		<property name="username" value="root"></property>
+       		<property name="password" value="root"></property>
+       </bean>
+       
+       <!-- 扫描局部配置文件 -->
+       <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+       		<!-- 告诉spring容器创建SqlSession对象时，连接的是哪个数据库 -->
+       		<property name="dataSource" ref="basicDataSource"></property>
+       		<!-- 指定mybatis的局部xml文件的位置 -->
+       		<property name="mapperLocations" value="cn/java/mapper/*.xml"></property>
+       </bean>
+       
+       <!-- 将dao层中的方法与局部配置文件中的sql自动关联 -->
+       <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+       		<!-- 指定dao层类的位置 -->
+       		<property name="basePackage" value="cn.java.mapper"></property>
+       </bean>
+       
+</beans>
